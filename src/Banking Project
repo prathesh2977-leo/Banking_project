@@ -1,0 +1,16 @@
+id: bb1d6818-3044-4a5f-bbd4-86983d16fba2
+pipeline_type: WORKSPACE
+name: Banking_Pipeline_Risk_Liquidity 2026-09-30 12:37
+libraries:
+  - glob:
+      include: /Workspace/Users/prathesh2977@gmail.com/Banking_project/Banking_Pipeline_Risk_Liquidity
+        2026-09-30 12:37/transformations/**
+schema: default
+continuous: false
+development: false
+photon: true
+channel: CURRENT
+catalog: workspace
+serverless: true
+root_path: /Workspace/Users/prathesh2977@gmail.com/Banking_project/Banking_Pipeline_Risk_Liquidity
+  2026-09-30 12:37
