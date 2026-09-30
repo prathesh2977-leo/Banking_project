@@ -1,0 +1,25 @@
+resources:
+  jobs:
+    transaction_analytics:
+      name: banking-transaction-analytics-${bundle.target}
+      max_concurrent_runs: 1
+      continuous:
+        pause_status: UNPAUSED
+      environments:
+        - environment_key: default
+          spec:
+            environment_version: "2"
+      tasks:
+        - task_key: process_transactions
+          environment_key: default
+          spark_python_task:
+            python_file: ../src/main.py
+            parameters:
+              - --source-path
+              - ${var.source_path}
+              - --checkpoint-path
+              - ${var.checkpoint_path}
+              - --catalog
+              - ${var.catalog}
+              - --schema
+              - ${var.schema_name}

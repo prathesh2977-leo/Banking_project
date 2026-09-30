@@ -1,0 +1,33 @@
+bundle:
+  name: banking-transaction-analytics
+
+include:
+  - resources/*.yml
+
+sync:
+  include:
+    - src/**
+    - README.md
+
+variables:
+  catalog:
+    description: Unity Catalog catalog for the analytics tables
+    default: main
+  schema_name:
+    description: Unity Catalog schema for the analytics tables
+    default: banking_analytics
+  source_path:
+    description: Cloud storage or Unity Catalog Volume path containing transaction JSON
+    default: /Volumes/main/banking_analytics/landing/transactions
+  checkpoint_path:
+    description: Durable cloud storage or Volume path for streaming checkpoints
+    default: /Volumes/main/banking_analytics/checkpoints/transactions
+
+targets:
+  dev:
+    mode: development
+    default: true
+  prod:
+    mode: production
+    workspace:
+      root_path: /Shared/.bundle/${bundle.name}/${bundle.target}
